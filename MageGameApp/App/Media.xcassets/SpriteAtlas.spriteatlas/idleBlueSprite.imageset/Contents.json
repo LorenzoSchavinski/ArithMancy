@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "blue-mage-idle-Sheet.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

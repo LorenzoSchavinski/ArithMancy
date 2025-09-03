@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "red-mage-taking-damage-Sheet.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
