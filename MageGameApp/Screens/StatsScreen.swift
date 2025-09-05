@@ -12,7 +12,6 @@ struct StatsScreen: View {
     @AppStorage("stats.numberOfGames") private var numberOfGames = 0
     @AppStorage("stats.numberOfVictories") private var numberOfVictories = 0
 
-    // Estados apenas para exibir
     @State private var favoriteSpell: String = "-"
     @State private var favoriteSpellUses: Int = 0
 
@@ -68,11 +67,10 @@ struct StatsScreen: View {
             .padding(.top, 40)
         }
         .onAppear(perform: deriveFavorite)
-        // Opcional: se quiser atualizar “ao vivo” quando UserDefaults mudar:
         .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { _ in
             deriveFavorite()
         }
-        .customBackButton() // <-- ADICIONE APENAS ESTA LINHA
+        .customBackButton()
 
     }
 

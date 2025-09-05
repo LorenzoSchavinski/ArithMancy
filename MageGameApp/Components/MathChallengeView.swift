@@ -72,7 +72,6 @@ struct MathChallengeView: View {
             if newValue {
                 DispatchQueue.main.async {
                     isAnswerFieldFocused = true
-                    // ao voltar pro jogador, garanta uma nova equação fresca
                     generateNewEquation()
                 }
             } else {

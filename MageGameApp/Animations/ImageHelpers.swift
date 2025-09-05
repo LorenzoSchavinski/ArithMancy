@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import VideoToolbox // Precisamos disso para a conversão de imagem
+import VideoToolbox // conversão de imagem
 
 extension UIImage {
     
@@ -17,8 +17,6 @@ extension UIImage {
     /// - Returns: Um CVPixelBuffer pronto para ser usado pelo Core ML, ou nil se a conversão falhar.
     func pixelBuffer(width: Int, height: Int) -> CVPixelBuffer? {
         
-        // --- ETAPA 1: Redimensionar a Imagem ---
-        // Usamos UIGraphicsImageRenderer para criar uma nova imagem com alta qualidade.
         let newSize = CGSize(width: width, height: height)
         let imageRenderer = UIGraphicsImageRenderer(size: newSize)
         
@@ -35,7 +33,6 @@ extension UIImage {
         var pixelBuffer: CVPixelBuffer?
         
         // Cria o CVPixelBuffer.
-        // O formato kCVPixelFormatType_32ARGB é o padrão para imagens coloridas que o Core ML espera.
         let status = CVPixelBufferCreate(kCFAllocatorDefault,
                                           finalImage.width,
                                           finalImage.height,
@@ -51,7 +48,7 @@ extension UIImage {
         CVPixelBufferLockBaseAddress(buffer, CVPixelBufferLockFlags(rawValue: 0))
         let pixelData = CVPixelBufferGetBaseAddress(buffer)
         
-        // Cria um contexto de desenho que aponta diretamente para a memória do nosso buffer.
+        // Cria um contexto de desenho que aponta diretamente para a memória do buffer.
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         guard let context = CGContext(data: pixelData,
                                       width: finalImage.width,
@@ -64,10 +61,8 @@ extension UIImage {
             return nil
         }
         
-        // Desenha a imagem redimensionada no contexto, que por sua vez escreve os dados no pixelBuffer.
         context.draw(finalImage, in: CGRect(x: 0, y: 0, width: finalImage.width, height: finalImage.height))
         
-        // Libera a memória do buffer.
         CVPixelBufferUnlockBaseAddress(buffer, CVPixelBufferLockFlags(rawValue: 0))
         
         return buffer

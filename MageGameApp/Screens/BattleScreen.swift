@@ -22,9 +22,6 @@
         @State private var backgroundOpacity = 0.0
         @State private var isPlayerTurn = true
         
-//         BattleScreen.swift (coloque perto dos @State)
-//        private let miniWizardSize = CGSize(width: 140, height: 140)
-//     private let bombTickSize   = CGSize(width: 120, height: 120)
 
         
         @State private var playerPhase: WizardPhase = .idle
@@ -48,11 +45,11 @@
         @AppStorage("stats.numberOfGames") private var numberOfGames = 0
         @AppStorage("stats.numberOfVictories") private var numberOfVictories = 0
         
-        // Dicionário [spell: uses] salvo como JSON
+        // Dicionario [spell: uses] salvo como JSON
         private let spellCountsKey = "stats.spellUseCounts.v1"
         
         
-        // Timer interno do BombEngine já publica ticks via closure
+       
         
         var body: some View {
             ZStack {
@@ -184,10 +181,10 @@
                         
                         recordSpellUse(label)                //salva no banco
                         let casterIsEnemy = false
-                        let castDelay: TimeInterval = 1.0          // quer 2s DEPOIS do spell do mago
-                        let fxDuration: TimeInterval = 1.3 // ajuste se seu design for o inimigo lançar aqui
-                        let totalDuration = castDelay + fxDuration // dura spell do mago + FX
-                        let hurtTail: TimeInterval   = 0.8        // “últimos segundos” para o hurt
+                        let castDelay: TimeInterval = 1.0
+                        let fxDuration: TimeInterval = 1.3
+                        let totalDuration = castDelay + fxDuration
+                        let hurtTail: TimeInterval   = 0.8
                         let current = sessionId
 
                         triggerSpell(casterIsEnemy: casterIsEnemy,
@@ -256,7 +253,6 @@
         }
 
         private func scheduleEnemyAutoMove() {
-            // IA simples: chance de acerto; caso contrário, deixa explodir
             let willAnswerCorrectly = Int.random(in: 0...100) < 65
             let delay = min(2.0, max(0.6, bombEngine.currentMaxTime * 0.5))
             let current = sessionId
@@ -285,7 +281,7 @@
         }
         
         private func triggerPass(forEnemy: Bool) {
-            let duration: TimeInterval = 0.6  // ajuste fino
+            let duration: TimeInterval = 0.6
             let current = sessionId
             if forEnemy {
                 enemyPhase = .pass
@@ -330,7 +326,7 @@
 
             // 3) se explodiu no inimigo, só toca o feitiço visual e retorna
             if !wasPlayersTurn {
-                MageSpell()   // apenas efeito visual; a vida já foi reduzida acima
+                MageSpell()   // apenas efeito visual
                 return
             }
 

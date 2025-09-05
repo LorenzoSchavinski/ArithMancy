@@ -10,7 +10,6 @@ import UIKit
 import SwiftUICore
 import _SpriteKit_SwiftUI
 
-// One-shot (toca uma vez e desaparece) sem alterar SpriteSheetScene
 extension WizardFactory {
 
     private struct OneShotSprite: View {

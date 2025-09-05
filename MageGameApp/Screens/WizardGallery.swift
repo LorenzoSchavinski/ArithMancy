@@ -4,7 +4,7 @@ struct WizardGallery: View {
     @State private var useRed = false
     private var color: String { useRed ? "Red" : "Blue" }
     private func sheet(_ base: String) -> String { "\(base)\(color)Sprite" }
-    private var nudgeX: CGFloat { useRed ? 15 : -15 } // mesmo ajuste que você usava no idle
+    private var nudgeX: CGFloat { useRed ? 15 : -15 }
 
     var body: some View {
         ZStack {

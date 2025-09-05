@@ -23,7 +23,6 @@ struct StartScreen: View {
         
         
         
-        // Navigation gerenciada no App root
         ZStack{
             
             

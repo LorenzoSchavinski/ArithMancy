@@ -2,20 +2,18 @@ import SwiftUI
 
 struct TabBar: View {
     init() {
-        // --- Configuração da Aparência da Tab Bar ---
-        // Deixa a barra de abas com um fundo preto e 40% de opacidade
+        
         let appearance = UITabBarAppearance()
         appearance.configureWithTransparentBackground()
-        appearance.backgroundEffect = nil // Remove o efeito de blur
+        appearance.backgroundEffect = nil
         appearance.backgroundColor = UIColor(Color.appBlack).withAlphaComponent(0.4)
-        appearance.shadowColor = .clear // Remove a linha superior
+        appearance.shadowColor = .clear
         
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
         UITabBar.appearance().isTranslucent = true
         
-        // --- Configuração da Aparência da Navigation Bar ---
-        // Garante que a barra de navegação superior (onde fica o botão "Back") também seja transparente
+      
         let nav = UINavigationBarAppearance()
         nav.configureWithTransparentBackground()
         nav.backgroundEffect = nil
@@ -79,7 +77,6 @@ struct TabBar: View {
 }
 
 #Preview {
-    // Para ter uma prévia realista, é bom colocar dentro de uma NavigationStack
     NavigationStack {
         TabBar()
     }

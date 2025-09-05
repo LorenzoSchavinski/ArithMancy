@@ -90,8 +90,7 @@ struct EndView: View {
 
 #Preview {
     ZStack {
-        // Fundo para simular a tela de batalha
-        //Color.blue.ignoresSafeArea()
+        
         
         EndView(
             health: .constant(3),

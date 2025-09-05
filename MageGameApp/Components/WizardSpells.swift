@@ -13,14 +13,14 @@ struct WizardSpells: View {
     var isEnemy: Bool
     
     var body: some View {
-        // The body now simply calls the helper function to get the correct view.
+        
         spellAnimationView()
                    .offset(x: 110)
         
         
     }
     
-    // This is a helper function that builds and returns the correct view.
+    
     @ViewBuilder
     private func spellAnimationView() -> some View {
         //let primaryColor = isEnemy ? "Red" : "Blue"

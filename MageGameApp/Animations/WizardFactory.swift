@@ -15,9 +15,7 @@ struct WizardFactory {
     static func makeWizard(sheetName: String,
                            scale: CGFloat = 4.0,
                            options: SpriteView.Options = [.allowsTransparency]) -> some View {
-        // Usa o novo motor baseado em SpriteSheetScene
-        // Valores padrão para idle: 4 colunas, 1 linha, 4 frames
-        let view = makeSpriteSheet(
+                let view = makeSpriteSheet(
             imageName: sheetName,
             columns: 4,
             rows: 1,

@@ -47,7 +47,6 @@ final class SpriteSheetScene: SKScene {
             let row = config.rowIndex // 0 = topo
             let x = col * framePxW
             let yTop = row * framePxH
-            // CGImage cropping rect origin é top-left, então y = yTop diretamente
             let cropRect = CGRect(x: x, y: yTop, width: framePxW, height: framePxH)
             if let sub = cg.cropping(to: cropRect) {
                 let tex = SKTexture(cgImage: sub)
@@ -77,9 +76,7 @@ final class SpriteSheetScene: SKScene {
         let shape = SKShapeNode()
         let path = CGMutablePath()
 
-        // outer rect
         path.addRect(CGRect(x: -w/2, y: -h/2, width: w, height: h))
-        // grid lines
         let cellW = w / CGFloat(columns)
         let cellH = h / CGFloat(rows)
         for c in 1..<columns {

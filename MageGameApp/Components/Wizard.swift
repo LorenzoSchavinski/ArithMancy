@@ -51,21 +51,17 @@ struct Wizard: View {
 
         switch phase {
         case .idle:
-            // seu idle padrão
             return (isEnemy ? "idleRedSprite" : "idleBlueSprite", 4, 4, 6)
 
         case .pass:
-            // mapeamento “pass”
             let imageName = "pass\(user)Sprite"
             return (imageName, 4, 4, 5)
 
         case .spell:
-            // mapeamento “spell”
             let imageName = "spell\(user)Sprite"
             return (imageName, 6, 6, 4)
 
         case .hurt:
-            // mapeamento “hurt”
             let imageName = "hurt\(user)Sprite"
             return (imageName, 3, 3, 4)
         }

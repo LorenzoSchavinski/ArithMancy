@@ -8,7 +8,7 @@ class WizardScene: SKScene {
     private let frameHeight: CGFloat = 21
     private let idleFramesCount = 4
     private let scale = 4.0
-    private let sheetName: String   // agora constante
+    private let sheetName: String
     
     init(size: CGSize, sheetName: String) {
         self.sheetName = sheetName
@@ -25,23 +25,20 @@ class WizardScene: SKScene {
         self.scaleMode = .resizeFill
         self.backgroundColor = .clear
 
-        // Load image to get the pixel dimensions (points * scale)
         guard let uiImage = UIImage(named: sheetName) else { return }
         let sheetPxW = uiImage.size.width  * uiImage.scale
         let sheetPxH = uiImage.size.height * uiImage.scale
 
         let wizardSpriteSheet = SKTexture(imageNamed: sheetName)
         wizardSpriteSheet.filteringMode = .nearest
-        wizardSpriteSheet.usesMipmaps = false  // helps avoid bleeding on device
+        wizardSpriteSheet.usesMipmaps = false
 
-        // If your frameWidth/Height are in pixels, keep them as-is:
         let fw = frameWidth
         let fh = frameHeight
 
         var idleFrames: [SKTexture] = []
         let targetRowFromTop = 0
 
-        // half-pixel inset to prevent sampling neighbors
         let insetX: CGFloat = 0.5
         let insetY: CGFloat = 0.5
 
@@ -49,7 +46,6 @@ class WizardScene: SKScene {
             let x_px = fw * CGFloat(column) + insetX
             let y_px_top = fh * CGFloat(targetRowFromTop) + insetY
 
-            // Convert from top-left (pixels) to bottom-left normalized
             let x_norm = x_px / sheetPxW
             let y_norm = (sheetPxH - (y_px_top + fh - insetY*2)) / sheetPxH
             let w_norm = (fw - insetX*2) / sheetPxW

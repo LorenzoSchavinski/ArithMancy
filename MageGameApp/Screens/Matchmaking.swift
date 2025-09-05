@@ -9,19 +9,13 @@ struct Matchmaking: View {
        
 
         ZStack {
-//    
-//            KeyboardPreheater()
-//                    .frame(width: 0, height: 0)
-//                    .allowsHitTesting(false)
-//                    .accessibilityHidden(true)
-            
+
             Image("FullStartbg")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
                 .overlay(Color.black.opacity(0.45))
 
-            // a navegação agora é controlada via router
             
             VStack {
                 if matchFound {
@@ -58,7 +52,6 @@ struct Matchmaking: View {
         .customBackButton()
         .onAppear {
             if !matchFound {
-               //faz a busca de jogadores
                     self.matchFound = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         router.path.append(AppRoute.battle)
